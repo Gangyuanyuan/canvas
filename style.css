@@ -5,7 +5,7 @@ ol,li{
   margin: 0; padding: 0;
 }
 body{
-  overflow: hidden;        /*禁用滚动（移动端）*/
+  overflow: hidden;        /*禁用滚动条*/
 }
 
 .icon{
@@ -14,9 +14,12 @@ body{
   fill: currentColor;
   overflow: hidden;
 }
-#xxx{
-  /*background: white;*/
+#xxx {
+  /*background: white; */
   display: block;
+  position: fixed;   /*绝对定位禁止移动端滚动*/
+  top: 0;
+  left: 0;
 }
 .actions{
   position: fixed;
@@ -29,14 +32,10 @@ body{
   height: 2em;
   margin: 0 10px;
   transition: all 0.3s;    /*过度时间*/
-
 }
 .actions svg.active{
   fill: red;
   transform: scale(1.2);   /*图标变为之前的1.2倍*/
-}
-.actions svg.download.active{
-  
 }
 
 .colors{
@@ -53,7 +52,7 @@ body{
   transition: all 0.3s;
 }
 .colors > li.active{
-  box-shadow: 0 0 3px rgba(0,0,0,0.95);
+  box-shadow: 0 0 3px rgba(0,0,0,0.8);
   transform: scale(1.1);
 }
 .colors > li.red{

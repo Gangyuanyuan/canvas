@@ -115,7 +115,6 @@ function listonToUser(canvas){
   if(document.body.ontouchstart !== undefined){
 		// 触屏设备
 		canvas.ontouchstart = function(aaa){
-      console.log('触摸')
       var x = aaa.touches[0].clientX;
       var y = aaa.touches[0].clientY;
       using = true;
@@ -127,7 +126,6 @@ function listonToUser(canvas){
       }
 		}
 		canvas.ontouchmove = function(aaa){
-      console.log('移动')
       var x = aaa.touches[0].clientX;
     	var y = aaa.touches[0].clientY;
     	if(!using) {return}
@@ -140,7 +138,6 @@ function listonToUser(canvas){
     	}
 		}
 		canvas.ontouchend = function(aaa){
-      console.log('离开')
       using = false;
 		}
   }else{
