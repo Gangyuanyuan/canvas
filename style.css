@@ -1,25 +1,66 @@
+ol,li{
+  list-style: none;
+}
+*{
+  margin: 0; padding: 0;
+}
 body{
-  margin: 0px;
+  overflow: hidden;        /*禁用滚动（移动端）*/
 }
 
+.icon{
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
 #xxx{
-  background: green;
+  background: white;
   display: block;
 }
-
 .actions{
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
+  padding: 20px;
 }
+.actions svg{
+  width: 2em;
+  height: 2em;
+  margin：0 10px;
+  transition: all 0.3s;    /*过度时间*/
 
-.actions > #brush{
-  display: none;
 }
-
-.actions.x > #brush{
-  display: inline-block;
+.actions svg.active{
+  fill: red;
+  transform: scale(1.2);   /*图标变为之前的1.2倍*/
 }
-.actions.x > #eraser{
-  display: none;
+.colors{
+  position: fixed;
+  top: 60px;
+  left: 20px;
+}
+.colors > li{
+  width: 20px;
+  height: 20px;
+  margin: 12px 0;
+  border-radius: 50%;
+  border: 1px solid gray;
+  transition: all 0.3s;
+}
+.colors > li.active{
+  box-shadow: 0 0 3px rgba(0,0,0,0.95);
+  transform: scale(1.1);
+}
+.colors > li.red{
+  background: red; 
+}
+.colors > li.green{
+  background: green; 
+}
+.colors > li.blue{
+  background: blue; 
+}
+.colors > li.black{
+  background: black; 
 }
