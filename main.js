@@ -1,5 +1,7 @@
-var yyy = document.getElementById('xxx');
-var context = yyy.getContext('2d');
+var yyy = document.getElementById('xxx');   // 获取 id 为 xxx 的元素
+var context = yyy.getContext('2d');         // 获取 yyy 的二维渲染上下文
+var lineWidth = 5;
+var circleSize = 3
 
 autoSetCanvasSize(yyy);
 
@@ -15,6 +17,18 @@ eraser.onclick = function(){
   eraserEnabled = true;
   eraser.classList.add('active')
   pencil.classList.remove('active')
+}
+clear.onclick = function(){
+  context.clearRect(0, 0, yyy.width, yyy.height)
+}
+download.onclick = function(){
+  var url = yyy.toDataURL("image/png")
+  var a = document.createElement('a')
+  document.body.appendChild(a)
+  a.href = url
+  a.download = '我的图片'
+  a.target = '_blank'
+  a.click()
 }
 
 red.onclick = function(){
@@ -50,6 +64,15 @@ black.onclick = function(){
   blue.classList.remove('active') 
 }
 
+thin.onclick = function(){
+  lineWidth = 5;
+  circleSize = 3;
+}
+thick.onclick = function(){
+  lineWidth = 10;
+  circleSize = 5;
+}
+
 /******************/
 
 function autoSetCanvasSize(canvas){
@@ -62,6 +85,8 @@ function autoSetCanvasSize(canvas){
     var pageHeight = document.documentElement.clientHeight;  // 获取用户屏幕高度
     canvas.width = pageWidth;
     canvas.height = pageHeight;
+    context.fillStyle = 'white';     // 使用户保存图片时背景色为白色
+    context.fillRect(0, 0, yyy.width, yyy.height);
   }
 }
 
@@ -74,7 +99,7 @@ function drawCircle(x,y,radius){
 function drawLine(x1,y1,x2,y2){
   context.beginPath();
   context.moveTo(x1,y1);   // 起点
-  context.lineWidth = 5;
+  context.lineWidth = lineWidth;
   context.lineTo(x2,y2);   // 终点
   context.closePath();
   context.stroke();
@@ -98,7 +123,7 @@ function listonToUser(canvas){
         context.clearRect(x-5,y-5,10,10); // 鼠标默认位置为长方形左上角
     	}else{
     		lastPoint = {"x":x,"y":y};
-    		drawCircle(x,y,3);
+    		drawCircle(x,y,circleSize);
       }
 		}
 		canvas.ontouchmove = function(aaa){
@@ -128,7 +153,7 @@ function listonToUser(canvas){
         context.clearRect(x-5,y-5,10,10); // 鼠标默认位置为长方形左上角
       }else{
         lastPoint = {"x":x,"y":y};
-        drawCircle(x,y,3);
+        drawCircle(x,y,circleSize);
       }
     }
     canvas.onmousemove = function(aaa){
