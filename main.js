@@ -1,3 +1,7 @@
+document.ontouchmove = function(e){         // 禁止移动端触屏时屏幕滚动
+    e.preventDefault();
+}
+
 var yyy = document.getElementById('xxx');   // 获取 id 为 xxx 的元素
 var context = yyy.getContext('2d');         // 获取 yyy 的二维渲染上下文
 var lineWidth = 5;
@@ -85,7 +89,7 @@ function autoSetCanvasSize(canvas){
     var pageHeight = document.documentElement.clientHeight;  // 获取用户屏幕高度
     canvas.width = pageWidth;
     canvas.height = pageHeight;
-    context.fillStyle = 'white';     // 使用户保存图片时背景色为白色
+    context.fillStyle = 'white';     // 用户保存图片时背景色为白色
     context.fillRect(0, 0, yyy.width, yyy.height);
   }
 }

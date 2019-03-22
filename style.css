@@ -15,11 +15,8 @@ body{
   overflow: hidden;
 }
 #xxx {
-  /*background: white; */
   display: block;
-  position: fixed;   /*绝对定位禁止移动端滚动*/
-  top: 0;
-  left: 0;
+  /*background: white; */
 }
 .actions{
   position: fixed;
