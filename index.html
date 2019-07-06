@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximuscale=1.0, minimum-scale=1.0">  
-  <title>Canvas画板</title>
+  <title>画板涂鸦</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div id="myCanvas">
-    <canvas id="xxx" width=300 height=300></canvas>
+    <canvas id="canvas" width=300 height=300></canvas>
   </div>
   <div id="actions" class="actions">
   	<svg id="pencil" class="icon active">
@@ -20,21 +20,26 @@
     <svg id="clear" class="icon">
       <use xlink:href="#icon-clear"></use>
     </svg>
+  </div>
+  <div class="myDownload">
     <svg id="download" class="icon">
-      <use xlink:href="#icon-download"></use>
-    </svg>
+      <use xlink:href="#icon-save"></use>
+  </svg>
   </div>
   <ol class="colors">
     <li id="red" class="red"></li>
+    <li id="yellow" class="yellow"></li>
     <li id="green" class="green"></li>
     <li id="blue" class="blue"></li>
     <li id="black" class="black active"></li>
   </ol>
   <ol class="sizes">
-    <li id="thin" class="thin"></li>
     <li id="thick" class="thick"></li>
+    <li id="middle" class="middle"></li>
+    <li id="thin" class="thin"></li>
   </ol>
   <script src="./main.js"></script>
-  <script src="//at.alicdn.com/t/font_1099674_wfyhyilriss.js"></script>
+  <script src="//at.alicdn.com/t/font_1099674_puuqhmkumd.js"></script>
+
 </body>
 </html>

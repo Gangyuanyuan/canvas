@@ -1,11 +1,11 @@
-document.ontouchmove = function(e){         // 禁止移动端触屏时屏幕滚动
+document.ontouchmove = function(e){         // 移动端触屏时禁止屏幕滚动
     e.preventDefault();
 }
 
-var yyy = document.getElementById('xxx');   // 获取 id 为 xxx 的元素
+var yyy = document.getElementById('canvas');   // 获取 id 为 canvas 的元素
 var context = yyy.getContext('2d');         // 获取 yyy 的二维渲染上下文
 var lineWidth = 5;
-var circleSize = 3
+var circleSize = 3;
 
 autoSetCanvasSize(yyy);
 
@@ -30,45 +30,62 @@ download.onclick = function(){
   var a = document.createElement('a')
   document.body.appendChild(a)
   a.href = url
-  a.download = '我的图片'
+  a.download = '我的涂鸦'
   a.target = '_blank'
   a.click()
+  context.fillStyle = '#CBECB9' // 用户保存图片时的背景色
 }
 
 red.onclick = function(){
-  context.fillStyle = 'red';
-  context.strokeStyle = 'red';
+  context.fillStyle = 'red'
+  context.strokeStyle = 'red'
   red.classList.add('active')
   green.classList.remove('active')
   blue.classList.remove('active')
   black.classList.remove('active')
 }
+yellow.onclick = function(){
+  context.fillStyle = 'yellow'
+  context.strokeStyle = 'yellow'
+  yellow.classList.add('active')
+  red.classList.remove('active')
+  green.classList.remove('active')
+  blue.classList.remove('active')
+  black.classList.remove('active')
+}
 green.onclick = function(){
-  context.fillStyle = 'green';
-  context.strokeStyle = 'green';
+  context.fillStyle = 'green'
+  context.strokeStyle = 'green'
   green.classList.add('active')
   red.classList.remove('active')
+  yellow.classList.remove('active')
   blue.classList.remove('active')
   black.classList.remove('active')
 }
 blue.onclick = function(){
-  context.fillStyle = 'blue';
-  context.strokeStyle = 'blue';
+  context.fillStyle = 'blue'
+  context.strokeStyle = 'blue'
   blue.classList.add('active')
   red.classList.remove('active')
+  yellow.classList.remove('active')
   green.classList.remove('active')
   black.classList.remove('active')
 }
 black.onclick = function(){
-  context.fillStyle = 'black';
-  context.strokeStyle = 'black';
+  context.fillStyle = 'black'
+  context.strokeStyle = 'black'
   black.classList.add('active')
   red.classList.remove('active')
+  yellow.classList.remove('active')
   green.classList.remove('active')
   blue.classList.remove('active') 
 }
 
 thin.onclick = function(){
+  lineWidth = 2;
+  circleSize = 1;
+}
+middle.onclick = function(){
   lineWidth = 5;
   circleSize = 3;
 }
@@ -89,7 +106,7 @@ function autoSetCanvasSize(canvas){
     var pageHeight = document.documentElement.clientHeight;  // 获取用户屏幕高度
     canvas.width = pageWidth;
     canvas.height = pageHeight;
-    context.fillStyle = 'white';     // 用户保存图片时背景色为白色
+    context.fillStyle = '#CBECB9';  // 画板背景色   
     context.fillRect(0, 0, yyy.width, yyy.height);
   }
 }
@@ -123,7 +140,7 @@ function listonToUser(canvas){
       var y = aaa.touches[0].clientY;
       using = true;
       if(eraserEnabled){
-        context.clearRect(x-5,y-5,10,10); // 鼠标默认位置为长方形左上角
+        context.clearRect(x-6,y-6,12,12); // 鼠标默认位置为长方形左上角
     	}else{
     		lastPoint = {"x":x,"y":y};
     		drawCircle(x,y,circleSize);
@@ -134,7 +151,7 @@ function listonToUser(canvas){
     	var y = aaa.touches[0].clientY;
     	if(!using) {return}
     	if(eraserEnabled){
-        context.clearRect(x-5,y-5,10,10);
+        context.clearRect(x-6,y-6,12,12);
     	}else{
         var newPoint = {"x":x,"y":y};
         drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y);
@@ -151,7 +168,7 @@ function listonToUser(canvas){
       var y = aaa.clientY;
       using = true;
       if(eraserEnabled){
-        context.clearRect(x-5,y-5,10,10); // 鼠标默认位置为长方形左上角
+        context.clearRect(x-6,y-6,12,12); // 鼠标默认位置为长方形左上角
       }else{
         lastPoint = {"x":x,"y":y};
         drawCircle(x,y,circleSize);
@@ -162,7 +179,7 @@ function listonToUser(canvas){
       var y = aaa.clientY;
       if(!using) {return}
       if(eraserEnabled){
-        context.clearRect(x-5,y-5,10,10);
+        context.clearRect(x-6,y-6,12,12);
       }else{
       var newPoint = {"x":x,"y":y};
         drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y);

@@ -7,16 +7,15 @@ ol,li{
 body{
   overflow: hidden;        /*禁用滚动条*/
 }
-
 .icon{
   width: 1em; height: 1em;
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
 }
-#xxx {
+#canvas {
   display: block;
-  /*background: white; */
+  background: #CBECB9;
 }
 .actions{
   position: fixed;
@@ -25,35 +24,46 @@ body{
   padding: 20px;
 }
 .actions svg{
-  width: 2em;
-  height: 2em;
+  width: 2.5em;
+  height: 2.5em;
   margin: 0 10px;
   transition: all 0.3s;    /*过度时间*/
 }
 .actions svg.active{
   fill: red;
-  transform: scale(1.2);   /*图标变为之前的1.2倍*/
+  transform: scale(1.3);   /*图标变为之前的1.2倍*/
 }
-
+.myDownload{
+  position: fixed;
+  top: 20px;
+  right: 25px;
+}
+.myDownload svg{
+  width: 2.5em;
+  height: 2.5em;
+}
 .colors{
   position: fixed;
-  top: 60px;
+  top: 90px;
   left: 28px;
 }
 .colors > li{
   width: 20px;
   height: 20px;
-  margin: 12px 0;
+  margin: 14px 0;
   border-radius: 50%;
   border: 1px solid gray;
   transition: all 0.3s;
 }
 .colors > li.active{
   box-shadow: 0 0 3px rgba(0,0,0,0.8);
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 .colors > li.red{
   background: red; 
+}
+.colors > li.yellow{
+  background: yellow;
 }
 .colors > li.green{
   background: green; 
@@ -67,19 +77,22 @@ body{
 
 .sizes{
   position: fixed;
-  top: 4px;
-  right: 20px;
+  top: 295px;
+  left: 28px;
 }
 .sizes > li{
-  margin: 20px 0;
-}
-.sizes > li.thin{
+  margin: 25px 0;
   height: 0px;
-  width: 20px;
-  border-top: 3px solid black;
 }
 .sizes > li.thick{
-  height: 0px;
-  width: 20px;
+  width: 25px;
   border-top: 6px solid black;
+}
+.sizes > li.middle{
+  width: 24px;
+  border-top: 3px solid black;
+}
+.sizes > li.thin{
+  width: 24px;
+  border-top: 1px solid black;
 }
